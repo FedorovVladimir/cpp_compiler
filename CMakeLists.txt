@@ -3,4 +3,4 @@ project(cpp_compiler)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(cpp_compiler main.cpp)
+add_executable(cpp_compiler main.cpp src src/Reader.h src/Reader.cpp)
