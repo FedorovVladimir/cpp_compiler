@@ -4,30 +4,19 @@
 
 #include <iostream>
 #include "src/Reader.h"
+#include "src/utils/Logger.cpp"
 
 using namespace std;
 
-/**
- * Перевод массива char[] в string
- * @param ch указатель на массив char[]
- * @return строка типа string
- */
-string ch2str(char *ch);
-
-/**
- * Вывод ошибки
- * @param s - текст ошибки
- */
-void error(const string& s);
-
 int main() {
     // открытие файла
-    char filePath[] = "/home/vladimir/CLionProjects/cpp_compiler/test_sources/main.c";
+    string filePath = "/home/vladimir/CLionProjects/cpp_compiler/test_sources/main.c";
     ifstream file(filePath);
     if (!file.is_open()) {
-        error("Файл " + ch2str(filePath) + " не удалось открыть");
+        error("Файл " + filePath + " не удалось открыть");
         return -1;
     }
+    info("Файл " + filePath + " успешно открыт");
 
     // чтение файла
     string text, line;
@@ -37,17 +26,10 @@ int main() {
     }
     text += '\0';
     file.close();
+    info("Файл " + filePath + " считан");
 
     // парсер
     Reader reader(text);
+    info("Начало обработки");
     return 0;
-}
-
-string ch2str(char *ch) {
-    string s(ch);
-    return s;
-}
-
-void error(const string& s) {
-    cout << "[error] " << s << endl;
 }
