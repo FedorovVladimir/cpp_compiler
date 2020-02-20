@@ -5,6 +5,9 @@
 #ifndef CPP_COMPILER_TOKENTYPE_H
 #define CPP_COMPILER_TOKENTYPE_H
 
+/**
+ * Перечисление типов токенов
+ */
 enum TokenType {
 
     TYPE_INT, // 1, 2, 3..
