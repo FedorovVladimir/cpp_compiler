@@ -11,9 +11,22 @@
 using namespace std;
 
 class Token {
+
 private:
     string text;
+
     TokenType tokenType;
+
+public:
+    explicit Token(TokenType tokenType);
+
+    explicit Token(TokenType tokenType, string text);
+
+    [[nodiscard]] const string &getText() const;
+
+    [[nodiscard]] TokenType getTokenType() const;
+
+    friend ostream &operator<<(ostream &os, const Token &token);
 };
 
 
