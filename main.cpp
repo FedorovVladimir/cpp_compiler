@@ -22,7 +22,7 @@ string ch2str(char *ch);
 void error(const string& s);
 
 int main() {
-    char filePath[] = "test_sources/main.c";
+    char filePath[] = "/home/vladimir/CLionProjects/cpp_compiler/test_sources/main.c";
     ifstream file(filePath);
     if (!file.is_open()) {
         error("Файл " + ch2str(filePath) + " не удалось открыть");
