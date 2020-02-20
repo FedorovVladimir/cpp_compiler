@@ -5,7 +5,6 @@
 #ifndef CPP_COMPILER_READER_H
 #define CPP_COMPILER_READER_H
 
-
 #include <fstream>
 
 using namespace std;
