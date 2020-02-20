@@ -16,6 +16,7 @@ using namespace std;
 class Token {
 
 private:
+
     /**
      * Текст лексемы (может отсутствовать)
      */
@@ -27,6 +28,7 @@ private:
     TokenType tokenType;
 
 public:
+
     /**
      * Конструктор сосздания лексемы без текста
      * @param tokenType тип лексемы

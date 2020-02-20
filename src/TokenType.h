@@ -33,6 +33,7 @@ enum TokenType {
     CLOSE_SQUARE, // ]
 
     LESS, // <
+    NOT, // !
     GREAT, // >
     LESS_EQUALLY, // <=
     GREAT_EQUALLY, // >=
