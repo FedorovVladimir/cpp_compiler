@@ -6,10 +6,14 @@
 #define CPP_COMPILER_READER_H
 
 
+#include <fstream>
+
+using namespace std;
+
 class Reader {
 
 public:
-    explicit Reader(const char *filePath);
+    explicit Reader(istream& file);
 };
 
 
