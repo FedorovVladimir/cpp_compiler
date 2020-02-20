@@ -45,14 +45,24 @@ private:
     TokenType tokenCompareMass[4] = {LESS, GREAT, ASSIGN, NOT};
     TokenType tokenCompareEquallyMass[4] = {LESS_EQUALLY, GREAT_EQUALLY, EQUALLY, NOT_EQUALLY};
 
+    /**
+     * Переход к следующему символу, к новому столбцу, к новой строке
+     */
     void addNumberSymbol();
 
+    /**
+     * Функция игнорирования комментариев и ненужных символов: \t, \r..
+     */
     void ignoringSymbols();
 
 public:
 
     explicit Reader(const string& text);
 
+    /**
+     * Функция считывания очередной лексемы
+     * @return лексема
+     */
     Token nextScanner();
 };
 

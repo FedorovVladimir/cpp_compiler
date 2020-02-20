@@ -63,5 +63,4 @@ public:
     friend ostream &operator<<(ostream &os, const Token &token);
 };
 
-
 #endif //CPP_COMPILER_TOKEN_H
