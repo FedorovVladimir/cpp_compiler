@@ -44,6 +44,10 @@ private:
     TokenType tokenCompareMass[4] = {LESS, GREAT, ASSIGN, NOT};
     TokenType tokenCompareEquallyMass[4] = {LESS_EQUALLY, GREAT_EQUALLY, EQUALLY, NOT_EQUALLY};
 
+    void addNumberSymbol();
+
+    void ignoringSymbols();
+
 public:
 
     explicit Reader(const string& text);
