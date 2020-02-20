@@ -47,8 +47,7 @@ enum TokenType {
     CLOSE_CURLY_BRACE, // }
     ASSIGN, // =
 
-    ERROR,
-    EOF
+    ERROR
 };
 
 #endif //CPP_COMPILER_TOKENTYPE_H

@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include "TokenType.h"
+#include "Token.h"
 
 using namespace std;
 
@@ -51,6 +52,8 @@ private:
 public:
 
     explicit Reader(const string& text);
+
+    Token nextScanner();
 };
 
 #endif //CPP_COMPILER_READER_H

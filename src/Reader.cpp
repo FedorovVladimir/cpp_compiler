@@ -39,3 +39,8 @@ void Reader::addNumberSymbol() {
     }
     numberSymbol++;
 }
+
+Token Reader::nextScanner() {
+    ignoringSymbols();
+    return Token(DOUBLE); // todo убрать
+}

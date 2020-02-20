@@ -9,7 +9,7 @@ using namespace std;
 
 Token::Token(TokenType tokenType) {
     this->tokenType = tokenType;
-    this->text = nullptr;
+    this->text = "";
 }
 
 Token::Token(TokenType tokenType, string text) {

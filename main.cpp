@@ -31,5 +31,6 @@ int main() {
     // парсер
     Reader reader(text);
     info("Начало обработки");
+    cout << reader.nextScanner() << endl;
     return 0;
 }
