@@ -21,13 +21,25 @@ string ch2str(char *ch);
 void error(const string& s);
 
 int main() {
+    // открытие файла
     char filePath[] = "/home/vladimir/CLionProjects/cpp_compiler/test_sources/main.c";
     ifstream file(filePath);
     if (!file.is_open()) {
         error("Файл " + ch2str(filePath) + " не удалось открыть");
         return -1;
     }
-    Reader reader(file);
+
+    // чтение файла
+    string text, line;
+    while(file){
+        getline(file, line);
+        text += line + "\n";
+    }
+    text += '\0';
+    file.close();
+
+    // парсер
+    Reader reader(text);
     return 0;
 }
 

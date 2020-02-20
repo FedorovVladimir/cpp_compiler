@@ -7,8 +7,6 @@
 
 using namespace std;
 
-Reader::Reader(istream& file) {
-    char a;
-    file >> a;
-    cout << a;
+Reader::Reader(const string& text) {
+    this->text = text;
 }

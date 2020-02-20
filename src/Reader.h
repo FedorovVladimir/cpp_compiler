@@ -10,9 +10,13 @@
 using namespace std;
 
 class Reader {
-
+private:
+    int numberRow = 1;
+    int numberCol = 1;
+    int numberSymbol = 0;
+    string text;
 public:
-    explicit Reader(istream& file);
+    explicit Reader(const string& text);
 };
 
 
