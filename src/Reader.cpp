@@ -15,10 +15,7 @@ void Reader::ignoringSymbols() {
     bool canScanner = false;
     while (!canScanner) {
         canScanner = true;
-        while (text[numberSymbol] == ' ' ||
-               text[numberSymbol] == '\t' ||
-               text[numberSymbol] == '\n' ||
-               text[numberSymbol] == '\r') {
+        while (isspace(text[numberSymbol])) {
             addNumberSymbol();
             canScanner = false;
         }
