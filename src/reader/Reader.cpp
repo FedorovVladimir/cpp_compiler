@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "Reader.h"
-#include "utils/Logger.h"
+#include "../logger/Logger.h"
 
 using namespace std;
 
@@ -120,6 +120,7 @@ Token Reader::nextScanner() {
                 return Token(TYPE_DOUBLE, str);
             } catch (...) {
                 error("Read error TYPE_DOUBLE");
+                return Token(ERROR);
             }
         } else {
             try {
@@ -127,6 +128,7 @@ Token Reader::nextScanner() {
                 return Token(TYPE_INT, str);
             } catch (...) {
                 error("Read error TYPE_INT");
+                return Token(ERROR);
             }
         }
     }

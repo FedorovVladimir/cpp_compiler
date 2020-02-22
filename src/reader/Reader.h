@@ -6,8 +6,8 @@
 #define CPP_COMPILER_READER_H
 
 #include <fstream>
-#include "TokenType.h"
-#include "Token.h"
+#include "../token/TokenType.h"
+#include "../token/Token.h"
 
 using namespace std;
 

@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "src/Reader.h"
-#include "src/utils/Logger.h"
+#include "src/reader/Reader.h"
+#include "src/logger/Logger.h"
 
 using namespace std;
 
@@ -35,7 +35,6 @@ int main() {
     while (true) {
         token = reader.nextScanner();
         if (token.getTokenType() == ERROR) {
-            cout << token << endl;
             break;
         }
         if (token.getTokenType() == EOFILE) {
