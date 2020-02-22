@@ -6,21 +6,10 @@
 
 using namespace std;
 
-/**
- * Вывод сообщения с информацией
- * @param s - текст сообщения
- */
-void info(const string& s);
-
-/**
- * Вывод ошибки
- * @param s - текст ошибки
- */
-void error(const string& s);
+void info(const string& s) {
+    cout << "[info] " << s << endl;
+}
 
 void error(const string& s) {
     cout << "[error] " << s << endl;
-}
-void info(const string& s) {
-    cout << "[info] " << s << endl;
 }

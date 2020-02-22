@@ -4,13 +4,13 @@
 
 #include <iostream>
 #include "src/Reader.h"
-#include "src/utils/Logger.cpp"
+#include "src/utils/Logger.h"
 
 using namespace std;
 
 int main() {
     // открытие файла
-    string filePath = "/home/vladimir/CLionProjects/cpp_compiler/test_sources/main.c";
+    string filePath = R"(C:\Users\vladimir\CLionProjects\cpp_compiler\test_sources\main.c)";
     ifstream file(filePath);
     if (!file.is_open()) {
         error("Файл " + filePath + " не удалось открыть");
@@ -31,6 +31,16 @@ int main() {
     // парсер
     Reader reader(text);
     info("Начало обработки");
-    cout << reader.nextScanner() << endl;
+    bool f = true;
+    while (f) {
+        Token token = reader.nextScanner();
+        if (token.getTokenType() == ERROR) {
+            f = false;
+        }
+        if (token.getTokenType() == EOFILE) {
+            break;
+        }
+        cout << token << endl;
+    }
     return 0;
 }

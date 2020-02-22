@@ -5,6 +5,10 @@
 #ifndef CPP_COMPILER_TOKENTYPE_H
 #define CPP_COMPILER_TOKENTYPE_H
 
+#include <string>
+
+using namespace std;
+
 /**
  * Перечисление типов токенов
  */
@@ -19,6 +23,7 @@ enum TokenType {
     DOUBLE, // double
     INT, // int
     CHAR, // char
+    STRING, // string
     VOID, // void
     WHILE, // while
 
@@ -47,7 +52,10 @@ enum TokenType {
     CLOSE_CURLY_BRACE, // }
     ASSIGN, // =
 
-    ERROR
+    ERROR,
+    EOFILE
 };
+
+string ttToStr(TokenType tokenType);
 
 #endif //CPP_COMPILER_TOKENTYPE_H

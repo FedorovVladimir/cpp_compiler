@@ -38,13 +38,6 @@ private:
      */
     int numberSymbol = 0;
 
-    string tokenMathSymbols = "+-/*%;(){},[]";
-    TokenType tokenMathMass[13] = {PLUS, MINUS, SLASH, STAR, PERCENT, SEMICOLON, OPEN_PARENTHESIS, CLOSE_PARENTHESIS,
-                                   OPEN_CURLY_BRACE, CLOSE_CURLY_BRACE, COMMA, OPEN_SQUARE, CLOSE_SQUARE};
-    string tokenCompareSymbols = "<>=!";
-    TokenType tokenCompareMass[4] = {LESS, GREAT, ASSIGN, NOT};
-    TokenType tokenCompareEquallyMass[4] = {LESS_EQUALLY, GREAT_EQUALLY, EQUALLY, NOT_EQUALLY};
-
     /**
      * Переход к следующему символу, к новому столбцу, к новой строке
      */
@@ -54,6 +47,13 @@ private:
      * Функция игнорирования комментариев и ненужных символов: \t, \r..
      */
     void ignoringSymbols();
+
+    string tokenMathSymbols = "+-/*%;(){},[]";
+    TokenType tokenMathMass[13] = {PLUS, MINUS, SLASH, STAR, PERCENT, SEMICOLON, OPEN_PARENTHESIS, CLOSE_PARENTHESIS,
+                                   OPEN_CURLY_BRACE, CLOSE_CURLY_BRACE, COMMA, OPEN_SQUARE, CLOSE_SQUARE};
+    string tokenCompareSymbols = "<>=!";
+    TokenType tokenCompareMass[4] = {LESS, GREAT, ASSIGN, NOT};
+    TokenType tokenCompareEquallyMass[4] = {LESS_EQUALLY, GREAT_EQUALLY, EQUALLY, NOT_EQUALLY};
 
 public:
 

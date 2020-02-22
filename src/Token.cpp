@@ -26,6 +26,6 @@ TokenType Token::getTokenType() const {
 }
 
 ostream &operator<<(ostream &os, const Token &token) {
-    os << "text: " << token.text << " tokenType: " << token.tokenType;
+    os << "text: " << token.text << " tokenType: " << ttToStr(token.tokenType);
     return os;
 }

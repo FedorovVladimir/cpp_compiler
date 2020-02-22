@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Reader.h"
+#include "utils/Logger.h"
 
 using namespace std;
 
@@ -37,7 +38,110 @@ void Reader::addNumberSymbol() {
     numberSymbol++;
 }
 
+bool isIdSymbol(char c) {
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '$' || c == '_';
+}
+
 Token Reader::nextScanner() {
     ignoringSymbols();
-    return Token(DOUBLE); // todo убрать
+
+    if (isIdSymbol(text[numberSymbol])) {
+        string str(1, text[numberSymbol]);
+        addNumberSymbol();
+        while (isIdSymbol(text[numberSymbol]) || isdigit(text[numberSymbol])) {
+            str += text[numberSymbol];
+            addNumberSymbol();
+        }
+        if (str == "double")
+            return Token(DOUBLE);
+        if (str == "int")
+            return Token(INT);
+        if (str == "char")
+            return Token(CHAR);
+        if (str == "string")
+            return Token(STRING);
+        if (str == "void")
+            return Token(VOID);
+        if (str == "while")
+            return Token(WHILE);
+        return Token(ID, str);
+    }
+    if (tokenCompareSymbols.find(text[numberSymbol]) != 4294967295) {
+        int index = tokenCompareSymbols.find(text[numberSymbol]);
+        addNumberSymbol();
+        if (text[numberSymbol] == '=') {
+            addNumberSymbol();
+            return Token(tokenCompareEquallyMass[index]);
+        } else
+            return Token(tokenCompareMass[index]);
+    }
+    if (text[numberSymbol] == '\'') {
+        addNumberSymbol();
+        if(text[numberSymbol + 1] == '\'') {
+            numberSymbol += 2;
+            string str(1, text[numberSymbol - 2]);
+            return Token(TYPE_CHAR, str);
+        } else {
+            error("Ошибка считывания TYPE_CHAR");
+            return Token(ERROR);
+        }
+    }
+    if (text[numberSymbol] == '\"') {
+        addNumberSymbol();
+        string str;
+        while (text[numberSymbol] != '\"' && text[numberSymbol] != '\n') {
+            str += text[numberSymbol];
+            addNumberSymbol();
+        }
+        if (text[numberSymbol] == '\"') {
+            addNumberSymbol();
+            return Token(TYPE_STRING, str);
+        } else {
+            error("Ошибка считывания TYPE_STRING");
+            return Token(ERROR);
+        }
+    }
+    if (isdigit(text[numberSymbol])) {
+        string str(1, text[numberSymbol]);
+        addNumberSymbol();
+        while (isdigit(text[numberSymbol])) {
+            str += text[numberSymbol];
+            addNumberSymbol();
+        }
+        if (text[numberSymbol] == '.') {
+            str += text[numberSymbol];
+            addNumberSymbol();
+            while (isdigit(text[numberSymbol])) {
+                str += text[numberSymbol];
+                addNumberSymbol();
+            }
+            try {
+                stod(str);
+                return Token(TYPE_DOUBLE, str);
+            } catch (...) {
+                error("Ошибка считывания TYPE_DOUBLE слишком длинный");
+            }
+        } else {
+            try {
+                stoi(str);
+                return Token(TYPE_INT, str);
+            } catch (...) {
+                error("Ошибка считывания TYPE_INT слишком длинный");
+            }
+        }
+    }
+    if (tokenMathSymbols.find(text[numberSymbol]) != 4294967295) {
+        int index = tokenMathSymbols.find(text[numberSymbol]);
+        addNumberSymbol();
+        return Token(tokenMathMass[index]);
+    }
+    if (text[numberSymbol] == '\0')
+        return Token(EOFILE);
+    else {
+        char ch = text[numberSymbol];
+        addNumberSymbol();
+        string s(1, ch);
+        error("Неизвестный символ \'" + s + "\'");
+        return Token(ERROR);
+    }
 }
