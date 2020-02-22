@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "src/reader/Reader.h"
-#include "src/logger/Logger.h"
+#include "reader/Reader.h"
+#include "logger/Logger.h"
 
 using namespace std;
 
