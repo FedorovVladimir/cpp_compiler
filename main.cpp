@@ -13,10 +13,10 @@ int main() {
     string filePath = R"(C:\Users\vladimir\CLionProjects\cpp_compiler\test_sources\main.c)";
     ifstream file(filePath);
     if (!file.is_open()) {
-        error("Файл " + filePath + " не удалось открыть");
+        error("The file " + filePath + " could not be opened");
         return -1;
     }
-    info("Файл " + filePath + " успешно открыт");
+    info("The file " + filePath + " was successfully open");
 
     // чтение файла
     string text, line;
@@ -26,21 +26,24 @@ int main() {
     }
     text += '\0';
     file.close();
-    info("Файл " + filePath + " считан");
+    info("The file " + filePath + " was successfully read");
 
     // парсер
     Reader reader(text);
-    info("Начало обработки");
-    bool f = true;
-    while (f) {
-        Token token = reader.nextScanner();
+    info("Start reading");
+    Token token(EOFILE);
+    while (true) {
+        token = reader.nextScanner();
         if (token.getTokenType() == ERROR) {
-            f = false;
+            cout << token << endl;
+            break;
         }
         if (token.getTokenType() == EOFILE) {
             break;
         }
-        cout << token << endl;
+    }
+    if (token.getTokenType() == EOFILE) {
+        info("The file was successfully read");
     }
     return 0;
 }

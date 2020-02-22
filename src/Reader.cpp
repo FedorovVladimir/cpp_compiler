@@ -82,7 +82,7 @@ Token Reader::nextScanner() {
             string str(1, text[numberSymbol - 2]);
             return Token(TYPE_CHAR, str);
         } else {
-            error("Ошибка считывания TYPE_CHAR");
+            error("Read error TYPE_CHAR");
             return Token(ERROR);
         }
     }
@@ -97,7 +97,7 @@ Token Reader::nextScanner() {
             addNumberSymbol();
             return Token(TYPE_STRING, str);
         } else {
-            error("Ошибка считывания TYPE_STRING");
+            error("Read error TYPE_STRING");
             return Token(ERROR);
         }
     }
@@ -119,14 +119,14 @@ Token Reader::nextScanner() {
                 stod(str);
                 return Token(TYPE_DOUBLE, str);
             } catch (...) {
-                error("Ошибка считывания TYPE_DOUBLE слишком длинный");
+                error("Read error TYPE_DOUBLE");
             }
         } else {
             try {
                 stoi(str);
                 return Token(TYPE_INT, str);
             } catch (...) {
-                error("Ошибка считывания TYPE_INT слишком длинный");
+                error("Read error TYPE_INT");
             }
         }
     }
@@ -141,7 +141,7 @@ Token Reader::nextScanner() {
         char ch = text[numberSymbol];
         addNumberSymbol();
         string s(1, ch);
-        error("Неизвестный символ \'" + s + "\'");
+        error("Unknown character \'" + s + "\'");
         return Token(ERROR);
     }
 }
